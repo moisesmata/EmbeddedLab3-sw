@@ -80,8 +80,8 @@ int main(int argc, char *argv[])
   pos_y = atoi(argv[2]);
   vx = atoi(argv[3]);
   vy = atoi(argv[4]);
-  g = atoi(argv[5]);
-  damp = atoi(argv[6]);
+  g = strtod(argv[5], NULL);
+  damp = strtod(argv[6], NULL);
 
     
 printf("%lf, %lf, %lf, %lf, %lf, %lf\n", pos_x, pos_y, vx, vy, g, damp);
