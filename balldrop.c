@@ -60,7 +60,7 @@ int main()
     { 0, 480, 480 }, /* Red */
     { 400, 200, 200 }, /* Red */
   };
-  vga_ball_color_t init = { 640, 480, 0x000 };
+  vga_ball_color_t init = { 640, 0, 0x000 };
 
 # define COLORS 9
 
