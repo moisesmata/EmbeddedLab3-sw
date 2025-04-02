@@ -60,7 +60,7 @@ int main()
     { 0, 480, 480 }, /* Red */
     { 400, 200, 200 }, /* Red */
   };
-  vga_ball_color_t init = { 640, 240, 0x000 };
+  vga_ball_color_t init = { 640, 480, 0x000 };
 
 # define COLORS 9
 
@@ -76,7 +76,7 @@ int main()
 
   for (i = 0 ; i < 200 ; i++) {
     set_background_color(&init);
-    vy =+ 1;
+    vy =+ 9;
     init.red = init.red - vy;
     init.green = init.green + vx;
     //set_background_color(&colors[i % COLORS ]);
