@@ -74,10 +74,10 @@ int main()
   printf("initial state: ");
   print_background_color();
 
-  for (i = 0 ; i < 24 ; i++) {
+  for (i = 0 ; i < 200 ; i++) {
     set_background_color(&init);
-    init.red = init.red + vy;
-    init.green = init.green - vx;
+    init.red = init.red - vy;
+    init.green = init.green + vx;
     //set_background_color(&colors[i % COLORS ]);
     print_background_color();
     usleep(4000);
