@@ -77,18 +77,31 @@ int main()
   vx = 1;
   vy = 0;
 
-  for (i = 0 ; i < 200 ; i++) {
+    
+while(1){
     set_background_color(&init);
-    vy += 0.1;
+    vy += 0.2;
 
     pos_x = pos_x + vx;
     pos_y = pos_y + vy;
 
     if (pos_y > 480) {
       pos_y = 480;
-      vy = -vy;
+      vy = 0.8*-vy;
     }
 
+    if (pos_y < 0) {
+      pos_y = 0;
+      vy = 0.8*-vy;
+    }
+    if (pos_x > 1280) {
+      pos_x = 1280;
+      vx = 0.8*-vx;
+    }
+    if (pos_x < 0) {
+      pos_x = 0;
+      vx = 0.8*-vx;
+    }
     init.red = (short)(pos_x);
     init.green = (short)(pos_y);
     //set_background_color(&colors[i % COLORS ]);
