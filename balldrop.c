@@ -45,8 +45,8 @@ int main()
   vga_ball_arg_t vla;
   int i;
   static const char filename[] = "/dev/vga_ball";
-  short vx = 10;
-  short vy = 20;
+  short vx = 2;
+  short vy = 0;
 
   static const vga_ball_color_t colors[] = {
     //1280 x 480
@@ -76,6 +76,7 @@ int main()
 
   for (i = 0 ; i < 200 ; i++) {
     set_background_color(&init);
+    vy =+ 1;
     init.red = init.red - vy;
     init.green = init.green + vx;
     //set_background_color(&colors[i % COLORS ]);
