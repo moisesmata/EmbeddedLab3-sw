@@ -76,7 +76,7 @@ int main()
 
   for (i = 0 ; i < 200 ; i++) {
     set_background_color(&init);
-    vy += 2;
+    vy += 1;
     init.red = init.red + vx;
     init.green = init.green - vy;
     printf("vx = %d, vy = %d\n", vx, vy);
