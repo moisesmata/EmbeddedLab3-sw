@@ -80,7 +80,7 @@ int main()
     init.green = init.green - vx;
     //set_background_color(&colors[i % COLORS ]);
     print_background_color();
-    usleep(400000);
+    usleep(4000);
   }
   
   printf("VGA BALL Userspace program terminating\n");
