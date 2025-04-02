@@ -95,19 +95,23 @@ while(1){
     if (pos_y > 480) {
       pos_y = 480;
       vy = damp*-vy;
+      init.blue = 0xFF;
     }
 
     if (pos_y < 0) {
       pos_y = 0;
       vy = damp*-vy;
+      init.blue = 0xEE;
     }
     if (pos_x > 1280) {
       pos_x = 1280;
       vx = damp*-vx;
+      init.blue = 0xAB;
     }
     if (pos_x < 0) {
       pos_x = 0;
       vx = damp*-vx;
+      init.blue = 0x9F;
     }
 
     init.red = (short)(pos_x);
