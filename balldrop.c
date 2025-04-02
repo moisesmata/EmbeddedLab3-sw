@@ -44,15 +44,16 @@ void set_background_color(const vga_ball_color_t *c)
 
 int main(int argc, char *argv[])
 {
-
-  if(argc != 7){
-    printf("Usage: %s <pos_x> <pos_y> <vx> <vy> <gravity> <dampening>\n", argv[0]);
+  if(argc != 8){
+    printf("Usage: %s <pos_x> <pos_y> <vx> <vy> <gravity> <dampening> <random_flag>\n", argv[0]);
+    printf("  random_flag: 1 for random colors, 0 for no random colors\n");
     return -1;
   }
   vga_ball_arg_t vla;
   int i;
   static const char filename[] = "/dev/vga_ball";
   double pos_x, pos_y, vx, vy, g, damp;
+  int random_flag;
 
   static const vga_ball_color_t colors[] = {
     //1280 x 480
@@ -83,12 +84,14 @@ int main(int argc, char *argv[])
   vy = strtod(argv[4], NULL);
   g = strtod(argv[5], NULL);
   damp = strtod(argv[6], NULL);
+  random_flag = atoi(argv[7]);
 
 srand(time(NULL));
 
 printf("%lf, %lf, %lf, %lf, %lf, %lf\n", pos_x, pos_y, vx, vy, g, damp);
 while(1){
-    unsigned short random_number = rand() % 65536;
+    unsigned short random_number = random_flag ? (rand() % 65536) : 0;
+    
     set_background_color(&init);
     vy += g;
 
