@@ -7,6 +7,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "vga_ball.h"
 #include <sys/ioctl.h>
 #include <sys/types.h>
@@ -75,8 +76,6 @@ int main(int argc, char *argv[])
     return -1;
   }
 
-  printf("initial state: ");
-  print_background_color();
   pos_x = atoi(argv[1]);
   pos_y = atoi(argv[2]);
   vx = atoi(argv[3]);
@@ -85,7 +84,7 @@ int main(int argc, char *argv[])
   damp = atoi(argv[6]);
 
     
-printf("%lf, %lf, %lf, %lf, %lf, %lf", pos_x, pos_y, vx, vy, g, damp);
+printf("%lf, %lf, %lf, %lf, %lf, %lf\n", pos_x, pos_y, vx, vy, g, damp);
 while(1){
     set_background_color(&init);
     vy += g;
