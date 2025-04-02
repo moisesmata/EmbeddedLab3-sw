@@ -98,24 +98,24 @@ while(1){
     pos_x = pos_x + vx;
     pos_y = pos_y + vy;
 
-    if (pos_y > 480) {
-      pos_y = 480;
+    if (pos_y > 460) {
+      pos_y = 460;
       vy = damp*-vy;
       init.blue = random_number;
     }
 
-    if (pos_y < 0) {
-      pos_y = 0;
+    if (pos_y < 20) {
+      pos_y = 20;
       vy = damp*-vy;
       init.blue = random_number;
     }
-    if (pos_x > 1280) {
-      pos_x = 1280;
+    if (pos_x > 1240) {
+      pos_x = 1240;
       vx = damp*-vx;
       init.blue = random_number;
     }
-    if (pos_x < 0) {
-      pos_x = 0;
+    if (pos_x < 40) {
+      pos_x = 40;
       vx = damp*-vx;
       init.blue = random_number;
     }
