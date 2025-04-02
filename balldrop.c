@@ -85,6 +85,7 @@ int main(int argc, char *argv[])
   damp = atoi(argv[6]);
 
     
+printf("%lf, %lf, %lf, %lf, %lf, %lf", pos_x, pos_y, vx, vy, g, damp);
 while(1){
     set_background_color(&init);
     vy += g;
@@ -109,6 +110,7 @@ while(1){
       pos_x = 0;
       vx = damp*-vx;
     }
+
     init.red = (short)(pos_x);
     init.green = (short)(pos_y);
     //set_background_color(&colors[i % COLORS ]);
