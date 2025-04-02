@@ -40,12 +40,17 @@ void set_background_color(const vga_ball_color_t *c)
   }
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+
+  if(argc != 7){
+    printf("Usage: %s <pos_x> <pos_y> <vx> <vy> <gravity> <dampening>\n", argv[0]);
+    return -1;
+  }
   vga_ball_arg_t vla;
   int i;
   static const char filename[] = "/dev/vga_ball";
-  double pos_x, pos_y, vx, vy;
+  double pos_x, pos_y, vx, vy, g, damp;
 
   static const vga_ball_color_t colors[] = {
     //1280 x 480
@@ -72,35 +77,37 @@ int main()
 
   printf("initial state: ");
   print_background_color();
-  pos_x = 640;
-  pos_y = 0;
-  vx = 1;
-  vy = 0;
+  pos_x = atoi(argv[1]);
+  pos_y = atoi(argv[2]);
+  vx = atoi(argv[3]);
+  vy = atoi(argv[4]);
+  g = atoi(argv[5]);
+  damp = atoi(argv[6]);
 
     
 while(1){
     set_background_color(&init);
-    vy += 0.2;
+    vy += g;
 
     pos_x = pos_x + vx;
     pos_y = pos_y + vy;
 
     if (pos_y > 480) {
       pos_y = 480;
-      vy = 0.8*-vy;
+      vy = damp*-vy;
     }
 
     if (pos_y < 0) {
       pos_y = 0;
-      vy = 0.8*-vy;
+      vy = damp*-vy;
     }
     if (pos_x > 1280) {
       pos_x = 1280;
-      vx = 0.8*-vx;
+      vx = damp*-vx;
     }
     if (pos_x < 0) {
       pos_x = 0;
-      vx = 0.8*-vx;
+      vx = damp*-vx;
     }
     init.red = (short)(pos_x);
     init.green = (short)(pos_y);
