@@ -76,10 +76,10 @@ int main(int argc, char *argv[])
     return -1;
   }
 
-  pos_x = atoi(argv[1]);
-  pos_y = atoi(argv[2]);
-  vx = atoi(argv[3]);
-  vy = atoi(argv[4]);
+  pos_x = strtod(argv[1], NULL);
+  pos_y = strtod(argv[2], NULL);
+  vx = strtod(argv[3], NULL);
+  vy = strtod(argv[4], NULL);
   g = strtod(argv[5], NULL);
   damp = strtod(argv[6], NULL);
 
