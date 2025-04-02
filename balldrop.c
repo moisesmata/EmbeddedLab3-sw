@@ -84,8 +84,8 @@ int main()
     pos_x = pos_x + vx;
     pos_y = pos_y + vy;
 
-    if (pos_y > 1280) {
-      pos_y = 1280;
+    if (pos_y > 480) {
+      pos_y = 480;
       vy = -vy;
     }
 
