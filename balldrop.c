@@ -15,6 +15,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 
 int vga_ball_fd;
 
@@ -83,9 +84,11 @@ int main(int argc, char *argv[])
   g = strtod(argv[5], NULL);
   damp = strtod(argv[6], NULL);
 
-    
+srand(time(NULL));
+
 printf("%lf, %lf, %lf, %lf, %lf, %lf\n", pos_x, pos_y, vx, vy, g, damp);
 while(1){
+    unsigned short random_number = rand() % 65536;
     set_background_color(&init);
     vy += g;
 
@@ -95,23 +98,23 @@ while(1){
     if (pos_y > 480) {
       pos_y = 480;
       vy = damp*-vy;
-      init.blue = 0xE70D;
+      init.blue = random_number;
     }
 
     if (pos_y < 0) {
       pos_y = 0;
       vy = damp*-vy;
-      init.blue = 0xD8FC;
+      init.blue = random_number;
     }
     if (pos_x > 1280) {
       pos_x = 1280;
       vx = damp*-vx;
-      init.blue = 0x6ECB;
+      init.blue = random_number;
     }
     if (pos_x < 0) {
       pos_x = 0;
       vx = damp*-vx;
-      init.blue = 0x3201;
+      init.blue = random_number;
     }
 
     init.red = (short)(pos_x);
