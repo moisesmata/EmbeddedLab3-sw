@@ -83,12 +83,10 @@ int main()
 
     pos_x = pos_x + vx;
     pos_y = pos_y + vy;
-    /*
     if (pos_x > 1280) {
       pos_x = 1280;
       vx = -vx;
     }
-    */
 
     init.red = (short)(pos_x);
     init.green = (short)(pos_y);
