@@ -1,0 +1,131 @@
+hello.c: In function 'print_properties':
+hello.c:29:17: error: 'vga_ball_props_t {aka struct <anonymous>}' has no member named 'red'
+   vla.properties.red, vla.properties.green, vla.properties.blue);
+                 ^
+hello.c:29:37: error: 'vga_ball_props_t {aka struct <anonymous>}' has no member named 'green'
+   vla.properties.red, vla.properties.green, vla.properties.blue);
+                                     ^
+hello.c:29:59: error: 'vga_ball_props_t {aka struct <anonymous>}' has no member named 'blue'
+   vla.properties.red, vla.properties.green, vla.properties.blue);
+                                                           ^
+hello.c: At top level:
+hello.c:33:27: error: unknown type name 'vga_ball_color_t'
+ void set_properties(const vga_ball_color_t *c)
+                           ^
+hello.c: In function 'set_properties':
+hello.c:36:18: error: incompatible types when assigning to type 'vga_ball_props_t {aka struct <anonymous>}' from type 'int'
+   vla.properties = *c;
+                  ^
+hello.c: In function 'main':
+hello.c:49:16: error: unknown type name 'vga_ball_color_t'
+   static const vga_ball_color_t colors[] = {
+                ^
+hello.c:50:5: warning: braces around scalar initializer
+     { 0x000, 0x000, 0x000 }, /* Red */
+     ^
+hello.c:50:5: note: (near initialization for 'colors[0]')
+hello.c:50:14: warning: excess elements in scalar initializer
+     { 0x000, 0x000, 0x000 }, /* Red */
+              ^
+hello.c:50:14: note: (near initialization for 'colors[0]')
+hello.c:50:21: warning: excess elements in scalar initializer
+     { 0x000, 0x000, 0x000 }, /* Red */
+                     ^
+hello.c:50:21: note: (near initialization for 'colors[0]')
+hello.c:51:5: warning: braces around scalar initializer
+     { 1280, 480, 0 }, /* Red */
+     ^
+hello.c:51:5: note: (near initialization for 'colors[1]')
+hello.c:51:13: warning: excess elements in scalar initializer
+     { 1280, 480, 0 }, /* Red */
+             ^
+hello.c:51:13: note: (near initialization for 'colors[1]')
+hello.c:51:18: warning: excess elements in scalar initializer
+     { 1280, 480, 0 }, /* Red */
+                  ^
+hello.c:51:18: note: (near initialization for 'colors[1]')
+hello.c:52:5: warning: braces around scalar initializer
+     { 1280, 0, 0 }, /* Red */
+     ^
+hello.c:52:5: note: (near initialization for 'colors[2]')
+hello.c:52:13: warning: excess elements in scalar initializer
+     { 1280, 0, 0 }, /* Red */
+             ^
+hello.c:52:13: note: (near initialization for 'colors[2]')
+hello.c:52:16: warning: excess elements in scalar initializer
+     { 1280, 0, 0 }, /* Red */
+                ^
+hello.c:52:16: note: (near initialization for 'colors[2]')
+hello.c:53:5: warning: braces around scalar initializer
+     { 0, 480, 0 }, /* Red */
+     ^
+hello.c:53:5: note: (near initialization for 'colors[3]')
+hello.c:53:10: warning: excess elements in scalar initializer
+     { 0, 480, 0 }, /* Red */
+          ^
+hello.c:53:10: note: (near initialization for 'colors[3]')
+hello.c:53:15: warning: excess elements in scalar initializer
+     { 0, 480, 0 }, /* Red */
+               ^
+hello.c:53:15: note: (near initialization for 'colors[3]')
+hello.c:54:5: warning: braces around scalar initializer
+     { 0x000, 0x000, 0x100 }, /* Red */
+     ^
+hello.c:54:5: note: (near initialization for 'colors[4]')
+hello.c:54:14: warning: excess elements in scalar initializer
+     { 0x000, 0x000, 0x100 }, /* Red */
+              ^
+hello.c:54:14: note: (near initialization for 'colors[4]')
+hello.c:54:21: warning: excess elements in scalar initializer
+     { 0x000, 0x000, 0x100 }, /* Red */
+                     ^
+hello.c:54:21: note: (near initialization for 'colors[4]')
+hello.c:55:5: warning: braces around scalar initializer
+     { 1280, 0, 480 }, /* Red */
+     ^
+hello.c:55:5: note: (near initialization for 'colors[5]')
+hello.c:55:13: warning: excess elements in scalar initializer
+     { 1280, 0, 480 }, /* Red */
+             ^
+hello.c:55:13: note: (near initialization for 'colors[5]')
+hello.c:55:16: warning: excess elements in scalar initializer
+     { 1280, 0, 480 }, /* Red */
+                ^
+hello.c:55:16: note: (near initialization for 'colors[5]')
+hello.c:56:5: warning: braces around scalar initializer
+     { 1280, 480, 567 }, /* Red */
+     ^
+hello.c:56:5: note: (near initialization for 'colors[6]')
+hello.c:56:13: warning: excess elements in scalar initializer
+     { 1280, 480, 567 }, /* Red */
+             ^
+hello.c:56:13: note: (near initialization for 'colors[6]')
+hello.c:56:18: warning: excess elements in scalar initializer
+     { 1280, 480, 567 }, /* Red */
+                  ^
+hello.c:56:18: note: (near initialization for 'colors[6]')
+hello.c:57:5: warning: braces around scalar initializer
+     { 0, 480, 480 }, /* Red */
+     ^
+hello.c:57:5: note: (near initialization for 'colors[7]')
+hello.c:57:10: warning: excess elements in scalar initializer
+     { 0, 480, 480 }, /* Red */
+          ^
+hello.c:57:10: note: (near initialization for 'colors[7]')
+hello.c:57:15: warning: excess elements in scalar initializer
+     { 0, 480, 480 }, /* Red */
+               ^
+hello.c:57:15: note: (near initialization for 'colors[7]')
+hello.c:58:5: warning: braces around scalar initializer
+     { 400, 200, 200 }, /* Red */
+     ^
+hello.c:58:5: note: (near initialization for 'colors[8]')
+hello.c:58:12: warning: excess elements in scalar initializer
+     { 400, 200, 200 }, /* Red */
+            ^
+hello.c:58:12: note: (near initialization for 'colors[8]')
+hello.c:58:17: warning: excess elements in scalar initializer
+     { 400, 200, 200 }, /* Red */
+                 ^
+hello.c:58:17: note: (near initialization for 'colors[8]')
+make: *** [hello] Error 1

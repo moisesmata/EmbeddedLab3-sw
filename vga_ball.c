@@ -139,7 +139,7 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 	}
         
 	/* Set an initial props */
-        write_properties(&beige);
+        write_properties(&blue);
 
 	return 0;
 

@@ -44,15 +44,15 @@ void set_properties_color(const vga_ball_props_t *c)
 
 int main(int argc, char *argv[])
 {
-  if(argc != 8){
-    printf("Usage: %s <pos_x> <pos_y> <vx> <vy> <gravity> <dampening> <random_flag>\n", argv[0]);
+  if(argc != 9){
+    printf("Usage: %s <pos_x> <pos_y> <vx> <vy> <gravityx> <gravityy>  <dampening> <random_flag>\n", argv[0]);
     printf("  random_flag: 1 for random colors, 0 for no random colors\n");
     return -1;
   }
   vga_ball_arg_t vla;
   int i;
   static const char filename[] = "/dev/vga_ball";
-  double pos_x, pos_y, vx, vy, g, damp;
+  double pos_x, pos_y, vx, vy, gx,gy, damp;
   int random_flag;
 
   vga_ball_props_t init = { 640, 0, 0x000 };
@@ -70,18 +70,20 @@ int main(int argc, char *argv[])
   pos_y = strtod(argv[2], NULL);
   vx = strtod(argv[3], NULL);
   vy = strtod(argv[4], NULL);
-  g = strtod(argv[5], NULL);
-  damp = strtod(argv[6], NULL);
-  random_flag = atoi(argv[7]);
+  gx = strtod(argv[5], NULL);
+  gy = strtod(argv[6], NULL);
+  damp = strtod(argv[7], NULL);
+  random_flag = atoi(argv[8]);
 
 srand(time(NULL));
 
-printf("%lf, %lf, %lf, %lf, %lf, %lf\n", pos_x, pos_y, vx, vy, g, damp);
+printf("%lf, %lf, %lf, %lf, %lf, %lf, %lf\n", pos_x, pos_y, vx, vy, gx,gy, damp);
 while(1){
     unsigned short random_number = random_flag ? (rand() % 65536) : 0;
     
     set_properties_color(&init);
-    vy += g;
+    vy += gy;
+    vx += gx;
 
     pos_x = pos_x + vx;
     pos_y = pos_y + vy;
