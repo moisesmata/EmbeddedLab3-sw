@@ -17,25 +17,25 @@
 
 int vga_ball_fd;
 
-/* Read and print the background color */
-void print_background_color() {
+/* Read and print the properties color */
+void print_properties() {
   vga_ball_arg_t vla;
   
-  if (ioctl(vga_ball_fd, VGA_BALL_READ_BACKGROUND, &vla)) {
-      perror("ioctl(VGA_BALL_READ_BACKGROUND) failed");
+  if (ioctl(vga_ball_fd, VGA_BALL_READ_PROPERTIES, &vla)) {
+      perror("ioctl(VGA_BALL_READ_PROPERTIES) failed");
       return;
   }
   printf("%02x %02x %02x\n",
-	 vla.background.red, vla.background.green, vla.background.blue);
+	 vla.properties.red, vla.properties.green, vla.properties.blue);
 }
 
-/* Set the background color */
-void set_background_color(const vga_ball_color_t *c)
+/* Set the properties color */
+void set_properties(const vga_ball_color_t *c)
 {
   vga_ball_arg_t vla;
-  vla.background = *c;
-  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_BACKGROUND, &vla)) {
-      perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
+  vla.properties = *c;
+  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_PROPERTIES, &vla)) {
+      perror("ioctl(VGA_BALL_SET_PROPERTIES) failed");
       return;
   }
 }
@@ -68,11 +68,11 @@ int main()
   }
 
   printf("initial state: ");
-  print_background_color();
+  print_properties();
 
   for (i = 0 ; i < 24 ; i++) {
-    set_background_color(&colors[i % COLORS ]);
-    print_background_color();
+    set_properties(&colors[i % COLORS ]);
+    print_properties();
     usleep(400000);
   }
   

@@ -36,9 +36,9 @@
 #define DRIVER_NAME "vga_ball"
 
 /* Device registers */
-#define BG_RED(x) (x)
-#define BG_GREEN(x) ((x)+2)
-#define BG_BLUE(x) ((x)+4)
+#define POS_X(x) (x)
+#define POS_Y(x) ((x)+2)
+#define BG_RG(x) ((x)+4)
 
 /*
  * Information about our device
@@ -46,19 +46,19 @@
 struct vga_ball_dev {
 	struct resource res; /* Resource: our registers */
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
-        vga_ball_color_t background;
+        vga_ball_props_t properties;
 } dev;
 
 /*
  * Write segments of a single digit
  * Assumes digit is in range and the device information has been set up
  */
-static void write_background(vga_ball_color_t *background)
+static void write_properties(vga_ball_props_t *properties)
 {
-	iowrite16(background->red, BG_RED(dev.virtbase) );
-	iowrite16(background->green, BG_GREEN(dev.virtbase) );
-	iowrite16(background->blue, BG_BLUE(dev.virtbase) );
-	dev.background = *background;
+	iowrite16(properties->x, POS_X(dev.virtbase) );
+	iowrite16(properties->y, POS_Y(dev.virtbase) );
+	iowrite16(properties->rg_color, BG_RG(dev.virtbase) );
+	dev.properties = *properties;
 }
 
 /*
@@ -71,15 +71,15 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 	vga_ball_arg_t vla;
 
 	switch (cmd) {
-	case VGA_BALL_WRITE_BACKGROUND:
+	case VGA_BALL_WRITE_PROPERTIES:
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
-		write_background(&vla.background);
+		write_properties(&vla.properties);
 		break;
 
-	case VGA_BALL_READ_BACKGROUND:
-	  	vla.background = dev.background;
+	case VGA_BALL_READ_PROPERTIES:
+	  	vla.properties = dev.properties;
 		if (copy_to_user((vga_ball_arg_t *) arg, &vla,
 				 sizeof(vga_ball_arg_t)))
 			return -EACCES;
@@ -111,7 +111,7 @@ static struct miscdevice vga_ball_misc_device = {
  */
 static int __init vga_ball_probe(struct platform_device *pdev)
 {
-        vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7 };
+        vga_ball_props_t blue = { 400, 200, 0 };
 	int ret;
 
 	/* Register ourselves as a misc device: creates /dev/vga_ball */
@@ -138,8 +138,8 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		goto out_release_mem_region;
 	}
         
-	/* Set an initial color */
-        write_background(&beige);
+	/* Set an initial props */
+        write_properties(&beige);
 
 	return 0;
 
